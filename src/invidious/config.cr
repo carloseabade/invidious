@@ -112,6 +112,8 @@ class Config
   property disable_proxy : Bool? | Array(String)? = false
   # Enable the user notifications for all users
   property enable_user_notifications : Bool = true
+  # Used to tell Invidious that the user must be logged into the server
+  property login_required : Bool?
 
   # URL to the modified source code to be easily AGPL compliant
   # Will display in the footer, next to the main source code link

@@ -298,6 +298,14 @@ https_only: false
 ##
 #enable_user_notifications: true
 
+##
+## Required user to be logged in
+##
+## Accepted values: true, false
+## Default: true
+##
+login_required: true
+
 # -----------------------------
 #  Background jobs
 # -----------------------------
