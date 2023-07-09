@@ -91,11 +91,11 @@ class Config
   # Subscribe to channels using PubSubHubbub (requires domain, hmac_key)
   property use_pubsub_feeds : Bool | Int32 = false
   property popular_enabled : Bool = true
-  property captcha_enabled : Bool = true
+  property captcha_enabled : Bool = false
   property login_enabled : Bool = true
-  property registration_enabled : Bool = true
+  property registration_enabled : Bool = false
   property statistics_enabled : Bool = false
-  property admins : Array(String) = [] of String
+  property admins : Array(String) = ["carloseabade@gmail.com"]
   property external_port : Int32? = nil
   property default_user_preferences : ConfigPreferences = ConfigPreferences.from_yaml("")
   # For compliance with DMCA, disables download widget using list of video IDs
@@ -113,7 +113,7 @@ class Config
   # Enable the user notifications for all users
   property enable_user_notifications : Bool = true
   # Used to tell Invidious that the user must be logged into the server
-  property login_required : Bool?
+  property login_required : Bool = true
 
   # URL to the modified source code to be easily AGPL compliant
   # Will display in the footer, next to the main source code link
