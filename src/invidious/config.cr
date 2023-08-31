@@ -93,7 +93,7 @@ class Config
   property popular_enabled : Bool = true
   property captcha_enabled : Bool = false
   property login_enabled : Bool = true
-  property registration_enabled : Bool?
+  property registration_enabled : Bool = true
   property statistics_enabled : Bool = false
   property admins : Array(String) = ["carloseabade@gmail.com"]
   property external_port : Int32? = nil
