@@ -83,6 +83,22 @@ distclean: clean
 	rm -rf libs
 	rm -rf ~/.cache/{crystal,shards}
 
+# -----------------------
+#  Cleaning
+# -----------------------
+
+docker: check-docker
+	docker build -t $(name):$(version) -f docker/Dockerfile.arm64 .
+	docker tag $(name):$(version) $(name):latest
+	docker push $(name):$(version)
+	docker push $(name):latest
+
+check-docker:
+ifndef name
+	$(error Usage: make docker name=IMAGE_NAME version=IMAGE_VERSION)
+else ifndef version
+	$(error Usage: make docker name=IMAGE_NAME version=IMAGE_VERSION)
+endif
 
 # -----------------------
 #  Help page
@@ -104,6 +120,9 @@ help:
 	@echo "  distclean        Remove build artifacts and libraries"
 	@echo ""
 	@echo ""
+	@echo "  docker           Build, tag and push docker image."
+	@echo ""
+	@echo ""
 	@echo "Build options available for this Makefile:"
 	@echo ""
 	@echo "  RELEASE          Make a release build            (Default: 1)"
@@ -116,4 +135,4 @@ help:
 
 # No targets generates an output named after themselves
 .PHONY: all get-libs build amd64 run
-.PHONY: format test verify clean distclean help
+.PHONY: format test verify clean distclean docker help
